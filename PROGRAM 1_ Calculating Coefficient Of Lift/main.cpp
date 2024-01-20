@@ -17,14 +17,32 @@ void readData(const string &filename, vector<double> &angles, vector<double> &co
     fin.close();
 }
 double interpolation(double angle, const vector<double> &angles, const vector<double> &coefficients){
-    //return f(b) = f(a) + ((b - a)/(c - a))(f(c) - f(a))
+    //return f(b) = f(a) + ((b - a)/(c - a))(f(c) - f(a)) or f(b) if exists
 
-    //if 
+    //if b exists return f(b)
     for (unsigned int i = 1; i < angles.size(); i++){
         if (angle == angles[i]){
             return coefficients[i];
         }
     }
+    
+    double a = angles[0]; //biggest min
+    int aIndex = 0;
+    // b = angle
+    double c = angles[angles.size() - 1]; //smallest max
+    int cIndex = angles.size() - 1;
+
+    for (unsigned int i = 1; i < angles.size(); i++){ 
+        if (angles[i] > a && angles[i] < angle){
+            a = angles[i];
+            aIndex = i;
+            c = angles[i + 1];
+            cIndex = i + 1;
+        }
+    }
+    //return f(b) = f(a) +         ((   b  - a) / (c - a)) * (      f(c)           -        f(a)         )
+    return (coefficients[aIndex] + ((angle - a) / (c - a)) * (coefficients[cIndex] - coefficients[aIndex]));
+
 }
 
 bool isOrdered(const vector<double> &angles){
