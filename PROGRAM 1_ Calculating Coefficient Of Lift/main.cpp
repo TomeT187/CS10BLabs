@@ -25,7 +25,7 @@ double interpolation(double angle, const vector<double> &angles, const vector<do
             return coefficients[i];
         }
     }
-    
+
     double a = angles[0]; //biggest min
     int aIndex = 0;
     // b = angle
@@ -98,7 +98,7 @@ int main(int argc, char *argv[]){
     for (unsigned int i = 0; i < angles.size(); i++){
         cout << angles[i] << " " << coefficients[i] << endl;
     }
-
+    cout << interpolation(8.0, ); // finnish testing
     return 0;
 
 }
