@@ -17,19 +17,20 @@ int charCnt(string filename,char ch){
       return 1;
    }
    string input;
-   while(!fin.eof()){
-      getline(fin,input);
-      for (unsigned i = 0; i < input.size(); i++){
-         if (input[i] == ch){
-            count++;
-         }
-      }
-   }
-   // while (fin >> temp){
-   //    if (temp == ch){
-   //       count++;
+   // while(getline(fin,input)){
+      
+   //    for (unsigned i = 0; i < input.size(); i++){
+   //       if (input[i] == ch){
+   //          count++;
+   //         }
    //    }
    // }
+   char temp;
+   while (fin.get(temp)){
+      if (temp == ch){
+         count++;
+      }
+   }
 
 
    return count;
