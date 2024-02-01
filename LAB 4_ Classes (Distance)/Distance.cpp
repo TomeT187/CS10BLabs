@@ -35,7 +35,7 @@ double Distance::distanceInFeet() const{
 }
 
 double Distance::distanceInMeters() const{
-    return ((_feet * 12.0) + _inches) * 0.0254;
+    return distanceInInches() * 0.0254;
 }
 
 Distance Distance::operator+(const Distance &rhs) const{
