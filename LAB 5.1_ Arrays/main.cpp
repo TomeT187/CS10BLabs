@@ -18,10 +18,21 @@ double mean(const double array[], int arraySize){
 //  - Removes the value at this index by shifting all of the values after this value up, keeping the same relative order of all values not removed.
 //  - Reduces arraySize by 1.
 void remove(double array[], int &arraySize, int index){
+   //int lastIndex = arraySize;
    for (int i = index; i < arraySize; i++){
-      array[i] = array[i +1];
+      if (i < arraySize - 1){
+         array[i] = array[i +1];
+         
+      }
+      if ( i == arraySize - 1){
+         arraySize--;
+      }
    }
-   arraySize -= 1;
+   // if(array[arraySize -1] == array[lastIndex]){
+   //    arraySize--;
+   // }else{
+   //    arraySize = lastIndex - 1;
+   // }
 }
 
 
@@ -60,7 +71,6 @@ int main(int argc, char *argv[]) {
       array[counter] = fileInput;
       counter++;
    }
-   cout << "Size: " << counter << endl;
    
 
 
