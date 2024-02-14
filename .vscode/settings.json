@@ -8,6 +8,10 @@
         "ctime": "cpp",
         "xstring": "cpp",
         "iostream": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "stdexcept": "cpp",
+        "initializer_list": "cpp",
+        "type_traits": "cpp",
+        "xlocinfo": "cpp"
     }
 }
