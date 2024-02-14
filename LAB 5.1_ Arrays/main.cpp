@@ -52,6 +52,9 @@ const int ARR_CAP = 100;
 
 int main(int argc, char *argv[]) {
    // verify file name provided on command line
+   if (argc < 2){
+      return 1;
+   }
    string filename = argv[1];
 
    // open file and verify it opened
