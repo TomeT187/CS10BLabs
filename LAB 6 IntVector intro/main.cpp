@@ -40,7 +40,7 @@ int main(){
 
 
     cout << "Will abort the program after this test is ran and display error message" << endl;
-    int outOfBonds = 999;
+    int outOfBonds = size + 1;
     cout << "Value out of Bounds: " << emptyTest.at(outOfBonds);
 
     
