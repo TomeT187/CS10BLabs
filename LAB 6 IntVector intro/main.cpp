@@ -7,8 +7,12 @@ int main(){
 
     //vector with size and capacity 10 filled with 10
 
-    int size = 10;
-    int value = 5;
+    int size;
+    int value;
+    cout << "Enter vector size" << endl;
+    cin >> size;
+    cout << "Enter the value for all indices" << endl;
+    cin >> value;
     IntVector test(size,value);
 
     cout << "Should output " << size << " for both" << endl;
@@ -18,7 +22,10 @@ int main(){
     cout << "Should output " << false << endl;
     cout << "Test is not empty " << test.empty() << endl << endl;
     
-    int index = 3;
+    int index;
+    cout << "Enter an index to check" << endl;
+    cin >> index;
+    cout << "If index is out of bounds, program will abort" << endl;
     cout << "Should output " <<  value <<" at index " << index << endl;
     cout << "Value at index " << index << ": " << test.at(index) << endl << endl;
 
