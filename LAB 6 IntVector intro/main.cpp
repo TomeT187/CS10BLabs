@@ -4,25 +4,37 @@ using namespace std;
 
 
 int main(){
+
+    //vector with size and capacity 10 filled with 10
+
     int size = 10;
-    int values = 10;
-    IntVector test(size,values);
+    int value = 5;
+    IntVector test(size,value);
+
+    cout << "Should output " << size << " for both" << endl;
     cout << "Test size: " << test.size() << endl;
-    cout << "Test capacity: " << test.capacity() << endl;
+    cout << "Test capacity: " << test.capacity() << endl << endl;
 
-    IntVector emptyTest(0,5);
-    cout << "Test is not empty if 0 = " << test.empty() << endl;
-    cout << "Test is  empty if 1 = " << emptyTest.empty() << endl;
-
+    cout << "Should output " << false << endl;
+    cout << "Test is not empty " << test.empty() << endl << endl;
+    
     int index = 3;
-    cout << "Value at index " << index << ": " << test.at(index) << endl;
+    cout << "Should output " <<  value <<" at index " << index << endl;
+    cout << "Value at index " << index << ": " << test.at(index) << endl << endl;
 
+    cout << "Should output " << value << " for both front and back" << endl;
     cout << "Value at Front: " << test.front() << endl;
-    cout << "Value at Back: " << test.back() << endl;
+    cout << "Value at Back: " << test.back() << endl << endl;
 
-    //will abort the program after this test is ran
+    //test with an empty vector
+    IntVector emptyTest(0,5);
+    cout << "Should output " << true << endl;
+    cout << "Test is  empty " << emptyTest.empty()  << endl << endl;
+
+
+    cout << "Will abort the program after this test is ran and display error message" << endl;
     int outOfBonds = 999;
-    cout << "Value out of Bounds: " << test.at(outOfBonds);
+    cout << "Value out of Bounds: " << emptyTest.at(outOfBonds);
 
     
 
