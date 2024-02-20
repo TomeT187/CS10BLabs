@@ -17,7 +17,8 @@ IntVector::IntVector(unsigned capacity, int value){
 void IntVector::expand(){
     if (_capacity == 0){
         _capacity = 1;
-        int* temp = new int[_capacity];
+        delete[] _data;
+        _data = new int[_capacity];
         return;
     }
     int* temp = new int[_capacity * 2];
@@ -29,9 +30,17 @@ void IntVector::expand(){
     _data = temp;
 
 }
-//void IntVector::expand(unsigned amount){
 
-//}
+void IntVector::expand(unsigned amount){
+    int* temp = new int[_capacity + amount];
+    for (unsigned i = 0; i < _capacity; i++){ 
+        temp[i] = _data[i];
+    }
+    _capacity = _capacity * 2;
+    delete[] _data;
+    _data = temp;
+    _capacity = _capacity + amount;
+}
 
 IntVector::~IntVector(){
     delete[] _data;
@@ -65,3 +74,94 @@ int & IntVector::at(unsigned index){
     }
     return *(_data + index);
 }
+
+void IntVector::insert(unsigned index, int value){
+    if (index >= _size){
+        throw out_of_range("IntVector::at_range_check");
+    }
+    _size++;
+    if (_size > _capacity){
+        expand();
+    }
+    int temp = _data[index];
+    _data[index] = value;
+    for (unsigned i = index + 1; i < _size; i++){
+        _data[i] = temp;
+        temp = _data[i];
+    }
+}
+
+void IntVector::erase(unsigned index){
+    if (index >= _size){
+        throw out_of_range("IntVector::erase_range_check");
+    }
+    
+    for (unsigned i = index; i < _size-1; i++){
+        at(i) = at(i + 1);
+    }
+    _size--;
+
+}
+
+int & IntVector::front(){
+    return *(_data );
+}
+
+ int & IntVector::back() {
+    return *(_data + _size - 1);
+}
+
+void IntVector::assign(unsigned n, int value){
+    if(n > _capacity){
+        if( (_capacity * 2) > (n - _capacity) ){
+            expand();
+        }else{
+            expand(n - _capacity);
+        }
+    }
+    for (unsigned i = 0; i < n; i++){ 
+        _data[i] = value;
+    }
+    _size = n;
+
+}
+
+void IntVector::push_back(int value){
+    _size++;
+    if (_size > _capacity){
+        expand();
+    }
+    at(_size - 1) = value;
+}
+void IntVector::pop_back(){
+    _size--;
+}
+
+void IntVector::clear(){
+    _size = 0;
+}
+void IntVector::resize(unsigned n, int value){
+    if (n > _capacity){
+        if( (_capacity * 2) > (n - _capacity) ){
+            expand();
+        }else{
+            expand(n - _capacity);
+        }
+    }
+    if (n < _size){
+        _size = n;
+    }else if(n > _size){
+        for (unsigned i = _size; i < n; i++){
+            _data[i] = value;
+        }
+        _size = n;
+    }
+}
+
+void IntVector::reserve(unsigned n){
+    if (n > _capacity){
+        expand(n - _capacity);
+    }
+}
+
+
