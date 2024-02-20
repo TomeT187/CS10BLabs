@@ -76,23 +76,23 @@ int main(){
     // test.pop_back();
     // cout << test.back() << endl;
     
-    cout << "Before Insert" << endl;
-   for (unsigned i = 0; i < test.size(); i++){
-    cout << test.at(i);
-   }
-   cout << endl;
-   test.insert(3,2);
-   cout << "after insert" << endl;
-   for (unsigned i = 0; i < test.size(); i++){
-    cout << test.at(i);
-   }
-   cout << endl;
-   test.erase(3);
-   cout << "after erase" << endl;
-   for (unsigned i = 0; i < test.size(); i++){
+//     cout << "Before Insert" << endl;
+//    for (unsigned i = 0; i < test.size(); i++){
+//     cout << test.at(i);
+//    }
+//    cout << endl;
+//    test.insert(3,2);
+//    cout << "after insert" << endl;
+//    for (unsigned i = 0; i < test.size(); i++){
+//     cout << test.at(i);
+//    }
+//    cout << endl;
+//    test.erase(3);
+//    cout << "after erase" << endl;
+//    for (unsigned i = 0; i < test.size(); i++){
     
-    cout << test.at(i);
-   }
+//     cout << test.at(i);
+//    }
   
 //    cout << "Before assign" << endl;
 //    for (unsigned i = 0; i < test.size(); i++){
@@ -131,6 +131,19 @@ int main(){
 //   cout << "with lower reserve" << endl;
 //   test.reserve( 5);
 //   cout << test.capacity() << endl;
+// IntVector temp;
+// cout << "start";
+// temp.push_back(5);
+// cout << "pushed";
+// cout << temp.at(0);
+// IntVector* ptr = new IntVector;
+// delete ptr;
+// cout << "deleted2";
+    test.resize(40);
+    test.resize(100);
+    cout << test.size() << endl;
+    cout << test.capacity() << endl;
+
     
     return 0;
 }

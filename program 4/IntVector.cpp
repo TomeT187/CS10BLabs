@@ -16,9 +16,10 @@ IntVector::IntVector(unsigned capacity, int value){
 }
 void IntVector::expand(){
     if (_capacity == 0){
-        _capacity = 1;
-        delete[] _data;
-        _data = new int[_capacity];
+        _capacity = 1;        
+        int* temp = new int[_capacity];
+        _data = temp;
+
         return;
     }
     int* temp = new int[_capacity * 2];
@@ -36,8 +37,9 @@ void IntVector::expand(unsigned amount){
     for (unsigned i = 0; i < _capacity; i++){ 
         temp[i] = _data[i];
     }
-    _capacity = _capacity * 2;
-    delete[] _data;
+    if(_capacity != 0){
+        delete[] _data;
+    }
     _data = temp;
     _capacity = _capacity + amount;
 }
