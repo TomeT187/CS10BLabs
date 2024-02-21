@@ -6,12 +6,12 @@ using namespace std;
 IntVector::IntVector(unsigned capacity, int value){
     _size = capacity;
     _capacity = capacity;
-    if (capacity != 0){
+    //if (capacity != 0){
         _data = new int[capacity];
         for (unsigned i = 0; i < capacity; i++){
             *(_data + i) = value;
         }
-    }
+    //}
 
 }
 void IntVector::expand(){
@@ -78,18 +78,18 @@ int & IntVector::at(unsigned index){
 }
 
 void IntVector::insert(unsigned index, int value){
-    if (index >= _size){
-        throw out_of_range("IntVector::at_range_check");
+    if (index > _size){
+        throw out_of_range("IntVector::insert_range_check");
     }
     _size++;
     if (_size > _capacity){
         expand();
     }
-    int temp = _data[index];
-    _data[index] = value;
+    int temp = at(index);
+    at(index) = value;
     for (unsigned i = index + 1; i < _size; i++){
-        _data[i] = temp;
-        temp = _data[i];
+        at(i) = temp;
+        temp = at(i);
     }
 }
 
@@ -102,7 +102,6 @@ void IntVector::erase(unsigned index){
         at(i) = at(i + 1);
     }
     _size--;
-
 }
 
 int & IntVector::front(){
@@ -115,7 +114,7 @@ int & IntVector::front(){
 
 void IntVector::assign(unsigned n, int value){
     if(n > _capacity){
-        if( (_capacity * 2) > (n - _capacity) ){
+        if( (_capacity * 2) > (n) ){
             expand();
         }else{
             expand(n - _capacity);
@@ -144,7 +143,7 @@ void IntVector::clear(){
 }
 void IntVector::resize(unsigned n, int value){
     if (n > _capacity){
-        if( (_capacity * 2) > (n - _capacity) ){
+        if( (_capacity * 2) > (n) ){
             expand();
         }else{
             expand(n - _capacity);
