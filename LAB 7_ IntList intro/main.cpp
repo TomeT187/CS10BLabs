@@ -35,7 +35,6 @@ int main() {
       cout << "list1: " << list1 << endl;
       cout << endl;
       cout << "Calling list1 destructor..." << endl;
-      cout << list1.front() << list1.back() << "-------------" << endl;
    }
     cout << "list1 destructor returned" << endl;
    
