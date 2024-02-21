@@ -12,6 +12,7 @@
         "stdexcept": "cpp",
         "initializer_list": "cpp",
         "type_traits": "cpp",
-        "xlocinfo": "cpp"
+        "xlocinfo": "cpp",
+        "new": "cpp"
     }
 }
