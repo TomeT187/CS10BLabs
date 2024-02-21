@@ -25,7 +25,7 @@ int main() {
       cout << "list1: " << list1 << endl;
       cout << "pop" << endl;
       list1.pop_front();
-      cout << "list1: " << list1 << endl;
+      cout << "list1: " <<  list1 <<"here" << endl;
       cout << "pushfront 100" << endl;
       list1.push_front(100);
       cout << "pushfront 200" << endl;
@@ -35,8 +35,9 @@ int main() {
       cout << "list1: " << list1 << endl;
       cout << endl;
       cout << "Calling list1 destructor..." << endl;
+      cout << list1.front() << list1.back() << "-------------" << endl;
    }
-   cout << "list1 destructor returned" << endl;
+    cout << "list1 destructor returned" << endl;
    
    // Test destructor on empty IntList
    {

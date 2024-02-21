@@ -1,4 +1,4 @@
-#include "IntList.h";
+#include "IntList.h"
 
 IntList::IntList(){
     head = nullptr;
@@ -8,43 +8,51 @@ IntList::~IntList(){
     clear();
 }
 void IntList::clear(){
-
+    bool done = head == nullptr;
+    while(!done){
+        pop_front();
+        done = head == nullptr;
+    }
 }
 void IntList::push_front(int value){
     if(head != nullptr){
-        IntNode temp(value);
-        temp.next = head;
-        head = &temp;
+        IntNode* temp = new IntNode(value);
+        temp->next = head;
+        head = temp;
 
     }else{
         head = new IntNode(value);
         tail = head;
+        
     }
+
 
 }
 void IntList::pop_front(){
-
+    IntNode* temp = head;
+    head = head->next;
+    delete temp;
+    
 }
 bool IntList::empty() const{
-
+    return (head == nullptr);
 }
 const int & IntList::front() const{
-
+    return head->value;
 }
 const int & IntList::back() const{
-
+    return tail->value;
 }
 ostream & operator<<(ostream & out, const IntList & rhs){
     IntNode* temp = rhs.head;
-    bool notDone = true;
-    while (notDone)
-    {
-        /* code */
+    bool notDone = rhs.head != nullptr;
+    while (notDone){
         out << temp->value;
-        if(temp == nullptr){
+        temp = temp->next;
+        if(temp != nullptr){
             out << " ";
         }
-        temp = temp->next;
+        
         notDone = temp != nullptr;
     }
     return out;
