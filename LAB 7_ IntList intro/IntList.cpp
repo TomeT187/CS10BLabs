@@ -22,16 +22,15 @@ void IntList::push_front(int value){
 
     }else{
         head = new IntNode(value);
-        tail = head;
-        
+        tail = head;   
     }
-
-
 }
 void IntList::pop_front(){
-    IntNode* temp = head;
-    head = head->next;
-    delete temp;
+    if(!empty()){
+        IntNode* temp = head;
+        head = head->next;
+        delete temp;
+    }
     
 }
 bool IntList::empty() const{
