@@ -1,50 +1,77 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
-class Students {
-   public:
-      Students();
-      Students(int);
-      int GetTotal() const { return  numStudents; }
+class Employee {
+public:
+   void SetName(string employeeName) {
+      name = employeeName;
+   }
 
-   private:
-      int numStudents;
+   virtual void PrintInfo() {
+      cout << name << endl;
+   }
+
+protected:
+   string name;
 };
 
-Students::Students() : numStudents(0) {}
-Students::Students(int num) : numStudents(num) {}
+class Author : public Employee {
+public:
+   void SetGenre(string setGenre) {
+      genre = setGenre;
+   }
 
-class Tutor {
-   public:
-      Tutor(string);
-      Tutor(string, int);
-      void Print() const;
+   void PrintInfo() {
+      cout << name << " writes " << genre << endl;
+   }
 
-   private:
-      string name;
-      Students students;
+private:
+   string genre;
 };
 
-Tutor::Tutor(string tutorName) : name(tutorName) {}
-Tutor::Tutor(string tutorName, int numStudents) : name(tutorName), students(numStudents) {}
+class Designer : public Employee {
+public:
+   void SetObject(string setObject) {
+      object = setObject;
+   }
 
-void Tutor::Print() const {
-   if (students.GetTotal() == 0){
-      cout << name << " is alone" << endl;
+   void PrintInfo() {
+      cout << name << " designs " << object << endl;
    }
-   else {
-      cout << name << " has " << students.GetTotal() << " students" << endl;
-   }
-}
+
+private:
+   string object;
+};
 
 int main() {
-   Tutor myTutor("May");
-   Tutor yourTutor("Eve", 2);
+   Employee* person1;
+   Author* person2;
+   Designer* person3;
 
-   yourTutor.Print();
-   myTutor.Print();
+   vector<Employee*> personList;
+   unsigned int i;
 
+   person1 = new Employee();
+   person1->SetName("Amy");
+
+   person2 = new Author();
+   person2->SetName("Bill");
+   person2->SetGenre("mysteries");
+
+   person3 = new Designer();
+   person3->SetName("Mia");
+   person3->SetObject("clothes");
+
+   personList.push_back(person1);
+   personList.push_back(person3);
+   personList.push_back(person2);
+
+   for (i = 0; i < personList.size(); ++i) {
+      personList.at(i)->PrintInfo();
+   }
+   
    return 0;
 }
