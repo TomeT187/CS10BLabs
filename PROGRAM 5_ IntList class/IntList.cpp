@@ -48,10 +48,7 @@ const int & IntList::back() const{
 
 
 IntList::IntList(const IntList &cpy){
-        cout << cpy << endl;
         if((cpy.head != nullptr)){
-            cout << 1;
-            cout << 2;
             IntNode* temp = cpy.head;
             clear();
             while(temp != nullptr){
@@ -87,7 +84,7 @@ void IntList::push_back(int value){
         tail = temp;
     }else{
         head = temp;
-        tail = temp;//could be written better, idc
+        tail = temp;//could be written better
     }
 }
 
@@ -115,7 +112,7 @@ void IntList::selection_sort(){
     }
 }
 
-void IntList::insert_ordered(int value){//there is probably a better way to do this
+void IntList::insert_ordered(int value){//
     if(empty()){                        //if no elements
         push_back(value);
     }else if(head->next == nullptr){    //if one element
@@ -135,10 +132,10 @@ void IntList::insert_ordered(int value){//there is probably a better way to do t
             newNode->next = tail;
         }
     }else{                               //else 
-        IntNode* newNode = new IntNode(value);//there is definitely a better way to do this
+        IntNode* newNode = new IntNode(value);//
         IntNode* low = head;
         IntNode* high = head->next;
-        for(IntNode* curr = head; (curr != nullptr) ; curr = curr->next){//((curr->value < value) && )
+        for(IntNode* curr = head; (curr != nullptr) ; curr = curr->next){//
             if(curr->value < value){
                 low = curr;
                 high = curr->next;
@@ -163,7 +160,7 @@ void IntList::insert_ordered(int value){//there is probably a better way to do t
     }
 }
 
-void IntList::remove_duplicates(){//todo: change  tail when needed
+void IntList::remove_duplicates(){//
     IntNode* prev = head;
     for(IntNode* curr = head; (curr != nullptr) ; curr = curr->next){
         for(IntNode* i = curr; (i != nullptr) ; i = i->next){
