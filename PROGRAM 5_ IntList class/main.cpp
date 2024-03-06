@@ -6,17 +6,6 @@ using namespace std;
 int main() {
 
 
-   IntList test1;
-   test1.push_back(94);
-   test1.push_back(94);
-   test1.push_back(5);
-   test1.push_back(2);
-   test1.push_back(94);
-   
-   IntList test2(test1);
-   test2.remove_duplicates();
-   cout << test2.back()  << endl;
-
 
 
    cout << "Enter a test number(1-5): ";
